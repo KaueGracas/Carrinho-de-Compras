@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Carrinho de compras</title>
+  <script src="carrinho.js"></script>
+  <link rel="stylesheet" href="carrinho.css">
+</head>
+<body>
+    <div class="logo">
+    <img id="logo" src="./img/apple.png" alt="logo">
+    </div>
+    <div class="carrinho-de-compras">
+        <a href="#carrinho-vector"><img id="carrinho-logo" src="/img/carrinho.png" alt=""></a>
+<div class="counteiner">
+    </div>
+    <div class="iphone">
+      <h3>Apple iPhone Pro-Max 512 Gb's</h3>
+      <img id="iphone" src="/img/iphone.jpg" alt="">
+      <p>Valor:</p>
+      <h2>R$8.990,00</h2>
+      <input type="number" class="quantidade" min="1" placeholder="Quantidade:" id="qtd_iphone">
+      <button type="button" onclick="adicionar('iphone')">Adicionar</button>
+      <button type="button" id="remover_iphone" onclick="remover('iphone')">Remover</button>
+  </div>
+
+  <div class="ipad">
+      <h3>Apple iPad Pro Wi-Fi de 11 polegadas</h3>
+      <img id="ipad" src="/img/ipad.png" alt="">
+      <p>Valor:</p>
+      <h2>R$9.799,00</h2>
+      <input type="number" class="quantidade" min="1" placeholder="Quantidade:" id="qtd_ipad">
+      <button type="button" onclick="adicionar('ipad')">Adicionar</button>
+      <button type="button" id="remover_ipad" onclick="remover('ipad')">Remover</button>
+  </div>
+  
+  <div class="mac">
+      <h3>Apple notebook MacBook Air de 13 polegadas</h3>
+      <img id="mac" src="/img/mac.jpg" alt="">
+      <p>Valor:</p>
+      <h2>R$13.999,00</h2>
+      <input type="number" class="quantidade" min="1" placeholder="Quantidade:" id="qtd_mac">
+      <button type="button" onclick="adicionar('mac')">Adicionar</button>
+      <button type="button" id="remover_mac" onclick="remover('mac')">Remover</button>
+    </div>
+
+    <div class="watch">
+      <h3>Apple Watch Ultra</h3>
+      <img id="watch" src="/img/watch.png" alt="">
+      <p>Valor:</p>
+      <h2>R$4.599,00</h2>
+      <input type="number" class="quantidade" min="1" placeholder="Quantidade:" id="qtd_watch">
+      <button type="button" onclick="adicionar('watch')">Adicionar</button>
+      <button type="button" id="remover_watch" onclick="remover('watch')">Remover</button>
+    </div>
+
+    <div class="tv">
+      <h3>Apple TV 4K</h3>
+      <img id="tv" src="/img/tv.avif" alt="">
+      <p>Valor:</p>
+      <h2>R$2.249,00</h2>
+      <input type="number" class="quantidade" min="1" placeholder="Quantidade:" id="qtd_tv">
+      <button type="button" onclick="adicionar('tv')">Adicionar</button>
+      <button type="button" id="remover_tv" onclick="remover('tv')">Remover</button>
+    </div>
+
+    <div class="airpods">
+      <h3>Apple AirPods (3ª geração)</h3>
+      <img id="airpods" src="/img/airpods.jpg" alt="">
+      <p>Valor:</p>
+      <h2>R$1.499,00</h2>
+      <input type="number" class="quantidade" min="1" placeholder="Quantidade:" id="qtd_airpods">
+      <button type="button" onclick="adicionar('airpods')">Adicionar</button>
+      <button type="button" id="remover_airpods" onclick="remover('airpods')">Remover</button>
+    </div>
+</div>
+  </form>
+  <div id="carrinho-vector"></div>
+  <div class="carrinho-compras">
+  <h2>Carrinho de compras</h2>
+  <ul id="carrinho">
+    <li>Iphone <b>-</b> 0</li>
+    <li>iPad <b>-</b> 0</li>
+    <li>MacBook <b>-</b> 0</li>
+    <br>
+    <li>Watch <b>-</b> 0</li>
+    <li>Apple Tv <b>-</b> 0</li>
+    <li>AirPods <b>-</b> 0</li>
+  </ul>
+</div>
+<div class="total">
+  <h2>Valor total</h2>
+  <p id="total">R$0,00</p>
+</div>
+  <script>
+    function adicionar(produto) {
+      let quantidade = parseInt(document.getElementById("qtd_"+produto).value);
+      adicionarProduto(produto, quantidade);
+      atualizarCarrinho();
+      atualizarTotal();
+    }
+
+    function remover(produto) {
+      //let produto = document.getElementById("produto").value;
+      let quantidade = parseInt(document.getElementById("qtd_"+produto).value);
+      removerProduto(produto, quantidade);
+      atualizarCarrinho();
+      atualizarTotal();
+    }
+
+
+    function atualizarCarrinho() {
+      let carrinho = document.getElementById("carrinho").getElementsByTagName("li");
+      for (let i = 0; i < carrinho.length; i++) {
+        carrinho[i].textContent = `${produtos[i]} - ${quantidades[i]}`;
+      }
+    }
+
+    function atualizarTotal() {
+      let total = calcularTotal();
+      document.getElementById("total").textContent = `R$${total.toFixed(2)}`;
+    }
+  </script>
+</body>
+</html>
